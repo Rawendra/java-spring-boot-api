@@ -7,26 +7,39 @@ import org.springframework.stereotype.Component;
 import rawendra.jpahibernateproject.model.Book;
 import rawendra.jpahibernateproject.repository.BooksJpaRepo;
 import rawendra.jpahibernateproject.repository.BooksRepo;
+import rawendra.jpahibernateproject.repository.BooksRepoJpaChild;
 
 @Component
 public class CommandLineRunnerImpl implements CommandLineRunner {
 	
+//	@Autowired
+//	private BooksJpaRepo booksJpaRepo;
 	@Autowired
-	private BooksJpaRepo booksJpaRepo;
+	private BooksRepoJpaChild booksRepoJpaChild;
 
 	@Override
 	public void run(String... args) throws Exception {
-		booksJpaRepo.insert(new Book(5L, "shanataraman", "david-roberts"));
-		booksJpaRepo.insert(new Book(1L, "harry-potter", "jk-rowlings"));
-		booksJpaRepo.insert(new Book(2L, "twilight", "s-mayer"));
-		booksJpaRepo.insert(new Book(3L, "art-of-deception", "robert-williams"));
-		System.out.println(booksJpaRepo.findbyId(2l)); 
-		System.out.println(booksJpaRepo.deleteById(5l));
+		booksRepoJpaChild.save(new Book(5L, "shanataraman", "david-roberts"));
+		booksRepoJpaChild.save(new Book(3L, "art-of-deception", "robert-williams"));
+		booksRepoJpaChild.save(new Book(5L, "shanataraman", "david-roberts"));
+		booksRepoJpaChild.save(new Book(2L, "twilight", "s-mayer"));
+ 
+	
+}
+
+//	@Override
+//	public void run(String... args) throws Exception {
+//		booksJpaRepo.insert(new Book(5L, "shanataraman", "david-roberts"));
+//		booksJpaRepo.insert(new Book(1L, "harry-potter", "jk-rowlings"));
+//		booksJpaRepo.insert(new Book(2L, "twilight", "s-mayer"));
+//		booksJpaRepo.insert(new Book(3L, "art-of-deception", "robert-williams"));
+//		System.out.println(booksJpaRepo.findbyId(2l)); 
+//		System.out.println(booksJpaRepo.deleteById(5l));
 		
 		
 		
-		
-	}
+//		
+//	}
 	
 //	@Override
 //	public void run(String... args) throws Exception {
